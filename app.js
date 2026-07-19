@@ -1,6 +1,12 @@
 /* SPDX-License-Identifier: AGPL-3.0-or-later */
 (() => {
   "use strict";
+
+  const style = document.createElement("link");
+  style.rel = "stylesheet";
+  style.href = "batch.css";
+  document.head.append(style);
+
   const load = (src) => new Promise((resolve, reject) => {
     const script = document.createElement("script");
     script.src = src;
@@ -8,6 +14,7 @@
     script.onerror = () => reject(new Error(`Failed to load ${src}`));
     document.head.append(script);
   });
+
   load("i18n.js")
     .then(() => load("copy-overrides.js"))
     .then(() => load("app-core.js"))

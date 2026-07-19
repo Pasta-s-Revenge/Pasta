@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A private, client-side Folia compatibility gate for Bukkit plugin JAR files.">
+  <meta name="theme-color" content="#160f0a">
+  <title>Pasta's Revenge — Folia Patch Ritual</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Pasta's Revenge home">
+      <span class="brand-mark">🍝</span>
+      <span>Pasta's Revenge</span>
+    </a>
+    <nav class="top-actions" aria-label="Project links">
+      <a href="https://github.com/Pasta-s-Revenge/Pasta" target="_blank" rel="noreferrer" data-i18n="source">Source</a>
+      <a href="LICENSE" target="_blank" rel="noreferrer">AGPL-3.0</a>
+      <label class="language-label" for="language" data-i18n="language">Language</label>
+      <select id="language" aria-label="Language selector">
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="de">Deutsch</option>
+        <option value="zh-TW">繁體中文（台灣）</option>
+        <option value="zh-CN">简体中文</option>
+        <option value="it">Italiano</option>
+        <option value="es">Español</option>
+      </select>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow" data-i18n="eyebrow">THE PASTA HAS JUDGED YOUR THREADS</p>
+      <h1 data-i18n="title">Offer a plugin. Receive Folia's verdict.</h1>
+      <p class="lead" data-i18n="lead">Your JAR never leaves this browser. The ritual scans bytecode references, refuses unsafe conversions, and only writes <code>folia-supported: true</code> when the conservative gate is clean.</p>
+    </section>
+
+    <section class="ritual-card" aria-labelledby="upload-title">
+      <div class="sigil" aria-hidden="true">☉</div>
+      <h2 id="upload-title" data-i18n="uploadTitle">Place the sacred JAR upon the altar</h2>
+      <p data-i18n="uploadHint">Drag and drop a Bukkit / Paper plugin JAR, or select one from your device.</p>
+
+      <div id="dropZone" class="drop-zone" tabindex="0" role="button" aria-describedby="privacy-note">
+        <input id="fileInput" type="file" accept=".jar,application/java-archive" hidden>
+        <div class="noodle-icon" aria-hidden="true">🍝</div>
+        <strong data-i18n="dropPrimary">Drop plugin.jar here</strong>
+        <span data-i18n="dropSecondary">or click to choose a file</span>
+      </div>
+
+      <p id="privacy-note" class="privacy"><span aria-hidden="true">🔒</span> <span data-i18n="privacy">Local processing only. No upload, analytics, or server execution.</span></p>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+    </section>
+
+    <section id="results" class="results hidden" aria-labelledby="result-title">
+      <div class="result-heading">
+        <div>
+          <p class="eyebrow" data-i18n="verdict">VERDICT</p>
+          <h2 id="result-title"></h2>
+        </div>
+        <span id="resultBadge" class="badge"></span>
+      </div>
+      <p id="resultSummary" class="result-summary"></p>
+      <dl class="metrics">
+        <div><dt data-i18n="classes">Classes scanned</dt><dd id="classCount">0</dd></div>
+        <div><dt data-i18n="findings">Findings</dt><dd id="findingCount">0</dd></div>
+        <div><dt data-i18n="signatures">Signatures removed</dt><dd id="signatureCount">0</dd></div>
+      </dl>
+      <div id="findingList" class="finding-list"></div>
+      <div class="result-actions">
+        <button id="downloadButton" class="primary-button" type="button" disabled data-i18n="download">Download patched JAR</button>
+        <button id="resetButton" class="secondary-button" type="button" data-i18n="another">Judge another JAR</button>
+      </div>
+      <p class="warning" data-i18n="warning">Static analysis is not proof of thread safety. Test the result on a disposable Folia server before production use.</p>
+    </section>
+
+    <section class="principles" aria-label="Design principles">
+      <article><span>Ⅰ</span><h3 data-i18n="principle1Title">Private by construction</h3><p data-i18n="principle1Body">JAR bytes remain in browser memory and are never executed.</p></article>
+      <article><span>Ⅱ</span><h3 data-i18n="principle2Title">Refusal is a feature</h3><p data-i18n="principle2Body">Unsafe or ambiguous plugins are rejected instead of silently mislabeled.</p></article>
+      <article><span>Ⅲ</span><h3 data-i18n="principle3Title">Copyleft source</h3><p data-i18n="principle3Body">The web application is licensed under AGPL-3.0-or-later.</p></article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Copyright © 2026 Pasta's Revenge contributors.</p>
+    <p data-i18n="footer">Inspired by FoliaCode. Not affiliated with Mojang Studios or PaperMC.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

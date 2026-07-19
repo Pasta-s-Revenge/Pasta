@@ -1,6 +1,6 @@
 # Credits and design references
 
-- [MARVserver/pasta](https://github.com/MARVserver/pasta) — design reference for Bukkit-to-Folia transformation categories and runtime bridging. The v2 prototype is an independent browser implementation and does not copy its source code.
+- [MARVserver/pasta](https://github.com/MARVserver/pasta) — design reference for Bukkit-to-Folia bytecode transformation categories and runtime bridging. This project uses an independent implementation and does not copy its source code.
 - [MARVserver/Foliacode](https://github.com/MARVserver/Foliacode) — design reference for conservative transformation preconditions, explicit refusals, and post-transform reporting. FoliaCode is distributed under the MIT License.
 - [JSZip](https://stuk.github.io/jszip/) — browser ZIP/JAR processing, distributed under the MIT License.
 

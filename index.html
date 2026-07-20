@@ -3,120 +3,77 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#100704">
+  <meta name="theme-color" content="#f5f5f7">
   <meta name="description" content="Transform legacy Bukkit plugins into Folia-aware artifacts entirely in your browser.">
   <title>Pasta's Revenge — The Noodle Oracle</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="background" aria-hidden="true"></div>
-  <div class="noise" aria-hidden="true"></div>
-
   <header class="topbar">
     <a class="brand" href="./" aria-label="Pasta's Revenge home">
-      <span class="brand-sigil" aria-hidden="true">P</span>
+      <span class="brand-sigil" aria-hidden="true"><span>●</span></span>
       <span><b>Pasta's Revenge</b><small>Folia bytecode oracle</small></span>
     </a>
+    <nav class="main-nav" aria-label="Primary navigation">
+      <a class="active" href="#top">Home</a><a href="#transform">Plugins</a><a href="#principles">Documentation</a><a href="#about">About</a>
+    </nav>
     <div class="top-actions">
-      <a href="https://github.com/Pasta-s-Revenge/Pasta" data-i18n="source">Source</a>
-      <label>
-        <span class="sr-only" data-i18n="language">Language</span>
-        <select id="language" aria-label="Language">
-          <option value="en">English</option><option value="ja">日本語</option><option value="de">Deutsch</option>
-          <option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="it">Italiano</option><option value="es">Español</option>
-        </select>
-      </label>
+      <a class="icon-link" href="https://github.com/Pasta-s-Revenge/Pasta" aria-label="GitHub">GitHub</a>
+      <label><span class="sr-only" data-i18n="language">Language</span><select id="language" aria-label="Language"><option value="en">English</option><option value="ja">日本語</option><option value="de">Deutsch</option><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="it">Italiano</option><option value="es">Español</option></select></label>
+      <a class="download-link" href="#transform">Download</a>
     </div>
   </header>
 
-  <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-kicker"><span></span><b data-i18n="kicker">THE NOODLE ORACLE REWRITES BYTECODE</b><span></span></div>
-      <h1 id="hero-title" data-i18n="title">Turn legacy Bukkit plugins into Folia-aware artifacts.</h1>
-      <p data-i18n="lead">Scheduler calls, BukkitRunnable, entity teleportation, and region-owned block writes are rewritten inside your browser. Every change is verified and documented.</p>
-      <div class="trust-row" aria-label="Privacy and safety properties">
-        <span><i>01</i><b data-i18n="trustLocal">100% local</b></span>
-        <span><i>02</i><b data-i18n="trustNoExec">No plugin execution</b></span>
-        <span><i>03</i><b data-i18n="trustReport">Full audit report</b></span>
-      </div>
-    </section>
-
-    <section class="altar-grid" aria-label="Plugin transformation">
-      <article class="altar-panel">
-        <div class="altar-glow" aria-hidden="true"></div>
-        <div class="orbital" aria-hidden="true"><span></span><span></span><span></span><b>🍝</b></div>
-        <p class="section-label" data-i18n="ritual">TRANSMUTATION RITUAL</p>
-        <h2 data-i18n="uploadTitle">Offer a plugin JAR to the machine god.</h2>
-        <p class="muted" data-i18n="uploadHint">Drop a Bukkit or Paper plugin. The original file remains untouched.</p>
-        <div id="dropZone" class="drop-zone" role="button" tabindex="0" aria-describedby="drop-help">
-          <input id="fileInput" class="sr-only" type="file" accept=".jar,application/java-archive">
-          <span class="drop-icon" aria-hidden="true">↥</span>
-          <strong data-i18n="dropPrimary">Drop plugin.jar here</strong>
-          <small id="drop-help" data-i18n="dropSecondary">or click to select a file · maximum 200 MB</small>
+  <main id="top">
+    <section class="hero-shell" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="hero-kicker"><span aria-hidden="true">✦</span><b data-i18n="kicker">THE NOODLE ORACLE REWRITES BYTECODE</b></div>
+        <h1 id="hero-title" data-i18n="title">Turn legacy Bukkit plugins into Folia-aware artifacts.</h1>
+        <p data-i18n="lead">Scheduler calls, BukkitRunnable, entity teleportation, and region-owned block writes are rewritten inside your browser. Every change is verified and documented.</p>
+        <div class="trust-row" aria-label="Privacy and safety properties">
+          <article><span>✓</span><div><b data-i18n="trustLocal">100% local</b><small>Your files never leave this device.</small></div></article>
+          <article><span>⌁</span><div><b data-i18n="trustNoExec">No plugin execution</b><small>Uploads are scanned, never run.</small></div></article>
+          <article><span>≡</span><div><b data-i18n="trustReport">Full audit report</b><small>See every change with precise details.</small></div></article>
         </div>
-        <p class="privacy"><span aria-hidden="true">●</span> <span data-i18n="privacy">JAR bytes never leave this device.</span></p>
-      </article>
-
-      <aside class="engine-panel">
-        <p class="section-label" data-i18n="engine">ENGINE MATRIX</p>
-        <h2 data-i18n="engineTitle">Conservative where semantics matter. Aggressive where offsets stay stable.</h2>
-        <div class="engine-list">
-          <div><span class="engine-dot hot"></span><b data-i18n="engineScheduler">Scheduler bridge</b><small data-i18n="engineSchedulerBody">Legacy scheduler calls → Folia global or async scheduler</small></div>
-          <div><span class="engine-dot warm"></span><b data-i18n="engineRegion">Region ownership</b><small data-i18n="engineRegionBody">Block mutations → location-bound RegionScheduler</small></div>
-          <div><span class="engine-dot cold"></span><b data-i18n="engineEntity">Entity migration</b><small data-i18n="engineEntityBody">Discarded teleport results → teleportAsync bridge</small></div>
-          <div><span class="engine-dot hot"></span><b data-i18n="engineRefusal">Semantic refusal</b><small data-i18n="engineRefusalBody">Used task handles and ambiguous APIs remain manual</small></div>
-        </div>
-      </aside>
-    </section>
-
-    <section id="progressPanel" class="progress-panel" hidden aria-live="polite">
-      <div class="progress-copy"><span id="progressStage" data-i18n="preparing">Preparing the offering…</span><b id="progressPercent">0%</b></div>
-      <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
-      <p id="status" class="status"></p>
-      <div class="phase-row" aria-hidden="true"><span data-phase="opening">OPEN</span><span data-phase="scanning">SCAN</span><span data-phase="transforming">REWRITE</span><span data-phase="packing">SEAL</span></div>
-    </section>
-
-    <section id="results" class="results hidden" aria-labelledby="result-title">
-      <header class="result-header">
-        <div><p class="section-label" data-i18n="verdict">ORACLE VERDICT</p><h2 id="result-title"></h2><p id="resultSummary" class="result-summary"></p></div>
-        <span id="resultBadge" class="badge"></span>
-      </header>
-
-      <div class="dashboard-grid">
-        <article class="score-card">
-          <div id="scoreRing" class="score-ring"><div><b id="scoreValue">0</b><small>/ 100</small></div></div>
-          <p data-i18n="compatibilityScore">Compatibility score</p><small id="scoreCaption"></small>
-        </article>
-        <article class="plugin-card">
-          <p class="section-label" data-i18n="pluginIdentity">PLUGIN IDENTITY</p><h3 id="pluginName">—</h3>
-          <dl><div><dt data-i18n="version">Version</dt><dd id="pluginVersion">—</dd></div><div><dt data-i18n="mainClass">Main class</dt><dd id="pluginMain">—</dd></div><div><dt data-i18n="apiVersion">API</dt><dd id="pluginApi">—</dd></div><div><dt>SHA-256</dt><dd id="inputHash">—</dd></div></dl>
-        </article>
-        <article class="metrics-card">
-          <div><span data-i18n="classes">Classes</span><b id="classCount">0</b></div><div><span data-i18n="patched">Patched sites</span><b id="patchedCount">0</b></div><div><span data-i18n="manual">Manual findings</span><b id="manualCount">0</b></div><div><span data-i18n="nested">Nested JARs</span><b id="nestedCount">0</b></div><div><span data-i18n="signatures">Signatures removed</span><b id="signatureCount">0</b></div><div><span data-i18n="elapsed">Elapsed</span><b id="elapsedTime">0 ms</b></div>
-        </article>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="halo"></div><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orbit orbit-c"></div><div class="orbit orbit-d"></div><div class="core"></div>
       </div>
 
-      <div class="action-bar">
-        <button id="downloadButton" class="button primary" disabled data-i18n="downloadJar">Download patched JAR</button>
-        <button id="jsonButton" class="button secondary" disabled>JSON</button><button id="htmlButton" class="button secondary" disabled>HTML</button><button id="markdownButton" class="button secondary" disabled>Markdown</button>
-        <button id="resetButton" class="button ghost" data-i18n="another">Judge another JAR</button>
-      </div>
+      <section id="transform" class="workspace" aria-label="Plugin transformation">
+        <article class="altar-panel">
+          <div class="panel-heading"><span class="panel-icon">⇧</span><div><p class="section-label" data-i18n="ritual">TRANSMUTATION RITUAL</p><h2 data-i18n="uploadTitle">Offer plugin JARs to the Pasta god.</h2><p class="muted" data-i18n="uploadHint">Drop a Bukkit or Paper plugin. The original file remains untouched.</p></div></div>
+          <div id="dropZone" class="drop-zone" role="button" tabindex="0" aria-describedby="drop-help">
+            <input id="fileInput" class="sr-only" type="file" accept=".jar,application/java-archive">
+            <span class="drop-icon" aria-hidden="true">☁</span><strong data-i18n="dropPrimary">Drop plugin.jar here</strong><small id="drop-help" data-i18n="dropSecondary">or click to select file · maximum 200 MB</small>
+          </div>
+          <p class="privacy"><span aria-hidden="true">▣</span> <span data-i18n="privacy">JAR bytes never leave this device.</span></p>
+        </article>
 
-      <section class="audit-panel">
-        <div class="audit-head"><div><p class="section-label" data-i18n="audit">TRANSFORMATION AUDIT</p><h3 data-i18n="auditTitle">Every rewritten and refused call site</h3></div><div class="filter-group" aria-label="Audit filters"><button class="filter active" data-filter="all" data-i18n="filterAll">All</button><button class="filter" data-filter="patched" data-i18n="filterPatched">Patched</button><button class="filter" data-filter="manual" data-i18n="filterManual">Manual</button></div></div>
-        <div id="findingList" class="finding-list"></div><p id="findingLimit" class="muted hidden" data-i18n="findingLimit">The on-screen list is limited. Download the report for every call site.</p>
+        <aside class="engine-panel">
+          <div class="engine-head"><div><p class="section-label" data-i18n="engine">ENGINE MATRIX</p><h2 data-i18n="engineTitle">Conservative where semantics matter. Aggressive where offsets stay stable.</h2></div><b>04</b></div>
+          <div class="engine-list">
+            <div><span>▦</span><p><b data-i18n="engineScheduler">Scheduler bridge</b><small data-i18n="engineSchedulerBody">Legacy scheduler calls → Folia global or async scheduler</small></p><i>›</i></div>
+            <div><span>◇</span><p><b data-i18n="engineRegion">Region ownership</b><small data-i18n="engineRegionBody">Block mutations → location-bound RegionScheduler</small></p><i>›</i></div>
+            <div><span>↝</span><p><b data-i18n="engineEntity">Entity migration</b><small data-i18n="engineEntityBody">Discarded teleport results → teleportAsync bridge</small></p><i>›</i></div>
+            <div><span>≣</span><p><b data-i18n="engineRefusal">Semantic refusal</b><small data-i18n="engineRefusalBody">Used task handles and ambiguous APIs remain manual</small></p><i>›</i></div>
+          </div>
+        </aside>
       </section>
     </section>
 
-    <section class="principles" aria-label="Design principles">
-      <article><b>01</b><h3 data-i18n="principle1Title">Offset-stable bytecode</h3><p data-i18n="principle1Body">Invoke instructions are replaced without shifting branch targets or exception tables.</p></article>
-      <article><b>02</b><h3 data-i18n="principle2Title">Injected runtime bridge</h3><p data-i18n="principle2Body">A compact Java 17 bridge routes calls to Folia APIs with Paper fallback behavior.</p></article>
-      <article><b>03</b><h3 data-i18n="principle3Title">Auditable output</h3><p data-i18n="principle3Body">The patched JAR contains META-INF/pasta-report.json and downloadable human-readable reports.</p></article>
+    <section id="progressPanel" class="progress-panel" hidden aria-live="polite"><div class="progress-copy"><span id="progressStage" data-i18n="preparing">Preparing the offering…</span><b id="progressPercent">0%</b></div><div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div><p id="status" class="status"></p><div class="phase-row" aria-hidden="true"><span data-phase="opening">OPEN</span><span data-phase="scanning">SCAN</span><span data-phase="transforming">REWRITE</span><span data-phase="packing">SEAL</span></div></section>
+
+    <section id="results" class="results hidden" aria-labelledby="result-title">
+      <header class="result-header"><div><p class="section-label" data-i18n="verdict">ORACLE VERDICT</p><h2 id="result-title"></h2><p id="resultSummary" class="result-summary"></p></div><span id="resultBadge" class="badge"></span></header>
+      <div class="dashboard-grid"><article class="score-card"><div id="scoreRing" class="score-ring"><div><b id="scoreValue">0</b><small>/ 100</small></div></div><p data-i18n="compatibilityScore">Compatibility score</p><small id="scoreCaption"></small></article><article class="plugin-card"><p class="section-label" data-i18n="pluginIdentity">PLUGIN IDENTITY</p><h3 id="pluginName">—</h3><dl><div><dt data-i18n="version">Version</dt><dd id="pluginVersion">—</dd></div><div><dt data-i18n="mainClass">Main class</dt><dd id="pluginMain">—</dd></div><div><dt data-i18n="apiVersion">API</dt><dd id="pluginApi">—</dd></div><div><dt>SHA-256</dt><dd id="inputHash">—</dd></div></dl></article><article class="metrics-card"><div><span data-i18n="classes">Classes</span><b id="classCount">0</b></div><div><span data-i18n="patched">Patched sites</span><b id="patchedCount">0</b></div><div><span data-i18n="manual">Manual findings</span><b id="manualCount">0</b></div><div><span data-i18n="nested">Nested JARs</span><b id="nestedCount">0</b></div><div><span data-i18n="signatures">Signatures removed</span><b id="signatureCount">0</b></div><div><span data-i18n="elapsed">Elapsed</span><b id="elapsedTime">0 ms</b></div></article></div>
+      <div class="action-bar"><button id="downloadButton" class="button primary" disabled data-i18n="downloadJar">Download patched JAR</button><button id="jsonButton" class="button secondary" disabled>JSON</button><button id="htmlButton" class="button secondary" disabled>HTML</button><button id="markdownButton" class="button secondary" disabled>Markdown</button><button id="resetButton" class="button ghost" data-i18n="another">Judge another JAR</button></div>
+      <section class="audit-panel"><div class="audit-head"><div><p class="section-label" data-i18n="audit">TRANSFORMATION AUDIT</p><h3 data-i18n="auditTitle">Every rewritten and refused call site</h3></div><div class="filter-group" aria-label="Audit filters"><button class="filter active" data-filter="all" data-i18n="filterAll">All</button><button class="filter" data-filter="patched" data-i18n="filterPatched">Patched</button><button class="filter" data-filter="manual" data-i18n="filterManual">Manual</button></div></div><div id="findingList" class="finding-list"></div><p id="findingLimit" class="muted hidden" data-i18n="findingLimit">The on-screen list is limited. Download the report for every call site.</p></section>
     </section>
 
-    <aside class="warning"><div aria-hidden="true">!</div><p><b data-i18n="warningTitle">Runtime verification still matters.</b><span data-i18n="warning">Automatic transformation cannot prove region correctness for every execution path. Test the generated JAR on a disposable Folia server before production.</span></p></aside>
+    <section id="principles" class="principles" aria-label="Design principles"><article><b>01</b><h3 data-i18n="principle1Title">Offset-stable bytecode</h3><p data-i18n="principle1Body">Invoke instructions are replaced without shifting branch targets or exception tables.</p></article><article><b>02</b><h3 data-i18n="principle2Title">Injected runtime bridge</h3><p data-i18n="principle2Body">A compact Java 17 bridge routes calls to Folia APIs with Paper fallback behavior.</p></article><article><b>03</b><h3 data-i18n="principle3Title">Auditable output</h3><p data-i18n="principle3Body">The patched JAR contains META-INF/pasta-report.json and downloadable human-readable reports.</p></article></section>
+    <aside id="about" class="warning"><div aria-hidden="true">!</div><p><b data-i18n="warningTitle">Runtime verification still matters.</b><span data-i18n="warning">Automatic transformation cannot prove region correctness for every execution path. Test the generated JAR on a disposable Folia server before production.</span></p></aside>
   </main>
-
   <footer data-i18n="footer">Independent project inspired by MARVserver/pasta and FoliaCode. Not affiliated with Mojang Studios or PaperMC.</footer>
   <script src="app.js"></script>
 </body>
